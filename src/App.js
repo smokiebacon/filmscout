@@ -1,28 +1,50 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Landing from './components/Landing/Landing';
+import Register from './components/Auth/Register';
+import Login from './components/Auth/Login';
+import { auth } from './Firebase/Firebase'
+import { doGetUser } from './Firebase/User'
+import { Switch, Route, withRouter } from 'react-router-dom'
+import  Navigation from './components/Landing/Navigation'
+import  Footer from './components/Landing/Footer'
+import AddProperty from './components/Admin/AddProperty';
+import Dashboard from './components/Admin/Dashboard';
+import AllAdminProperties from './components/Admin/AllAdminProperties';
+import EditProperty from './components/Admin/EditProperty';
 
 class App extends Component {
+  state = {
+    currentUser : {}
+  }
+  componentDidMount() {
+    auth.onAuthStateChanged(authUser => 
+      authUser &&
+        doGetUser(authUser.uid)
+          .then(currentUser => this.setState({currentUser: currentUser.data()}))
+    )
+  }
   render() {
+    console.log(this.state)
     return (
+      <Switch>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <Navigation />
+      <Route exact path="/" component = { Landing } />
+      <Route exact path="/dashboard" component = { Dashboard } />
+      <Route exact path="/addproperty" component = { AddProperty } />
+      <Route exact path="/allproperties" component = { AllAdminProperties } />
+      <Route exact path="/editproperty" component = { EditProperty } />
+
+      <Route exact path="/register" component = { Register } />
+      <Route path="/login" component={() => <Login doSetCurrentUser={(user) => this.setState({currentUser: user})}/>}/>
+      <Footer />
+
       </div>
+      </Switch>
+
     );
   }
 }
 
-export default App;
+export default withRouter(App);

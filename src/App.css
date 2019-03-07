@@ -1,33 +1,42 @@
+@import '~antd/dist/antd.css';
+
+img {
+  width: 100%;
+}
+.layout__landing {
+  position: relative;
+  background: url('./img/house.jpeg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin-top: 0;
+  margin-bottom: -50px;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.admin__alladminproperties__cards{
+  display: flex;
+  
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.admin__addproperty__form {
+ height: auto;
+ width: auto;
+ display: flex;
+ justify-content: center;
+}
+
+.admin__addproperty__contact-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.admin__addproperty__property-info {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }

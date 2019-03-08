@@ -3,6 +3,7 @@ import firebase from '../../Firebase/Firebase';
 import { withRouter } from 'react-router-dom';
 import { storeFile, getFile } from '../../Firebase/storage';
 import Upload  from '../Upload/Upload'
+import PicturesWall from '../Upload/Upload';
 
 class AddProperty extends Component {
   state = {
@@ -14,7 +15,7 @@ class AddProperty extends Component {
     lastName: '',
     email: '',
     phone: '',
-    fileRef: ''
+    fileRef: '',
   }
 onChange = (e) => {
   this.setState({
@@ -75,6 +76,8 @@ render () {
           <button type="submit">Submit</button>
         </div>
       </form>
+      <PicturesWall />
+
     </div>
     
   )

@@ -13,7 +13,7 @@ class Dashboard extends Component {
       <div>
           <h1>Admin Panel</h1>
           <Panel />
-          <Link to="/addproperty">
+          <Link to="/flowproperty">
             <Button type="primary">Create New Property</Button>
           </Link>
         

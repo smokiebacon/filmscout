@@ -1,4 +1,6 @@
 import React from 'react'
+import { storeFile, getFile } from '../../Firebase/storage';
+
 import { Upload, Icon, Modal } from 'antd';
 
 class PicturesWall extends React.Component {
@@ -7,12 +9,13 @@ class PicturesWall extends React.Component {
     previewImage: '',
     fileList: [{
       uid: '-1',
-      name: 'xxx.png',
+      name: 'default.png',
       status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+      url: '',
     }],
   };
 
+  
   handleCancel = () => this.setState({ previewVisible: false })
 
   handlePreview = (file) => {

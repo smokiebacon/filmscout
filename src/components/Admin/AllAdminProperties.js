@@ -54,7 +54,6 @@ class AllAdminProperties extends Component {
   render() {
     const { Meta } = Card;
 
-
     return (
       <div className="admin__alladminproperties__cards">
         <h1>All Admin Properties</h1>

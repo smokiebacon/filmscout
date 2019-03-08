@@ -1,25 +1,25 @@
 import React, { Component } from 'react'
 import firebase from '../../Firebase/Firebase';
+import { withRouter } from 'react-router-dom'
+import { doGetProperty } from '../../Firebase/Properties'
+import { message, Button } from 'antd';
+
 
 class EditProperty extends Component {
     state = {
-        address: '',
-        city: '',
-        state: '',
-        zip: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        fileRef: ''
+        property: {}
       }
 
     componentDidMount () {
-
+      console.log(this.props.match.params.id)
+        doGetProperty(this.props.match.params.id)
+          .then(snapShot => this.setState({ property: snapShot.data()}))
+          // .then(snapShot => console.log(snapShot.data()))
     }
+
     onChange = (e) => {
         this.setState({
-          [e.target.name] : e.target.value
+          property: {...this.state.property, [e.target.name] : e.target.value}
         })
       }
     onSubmit = (e) => {
@@ -27,8 +27,10 @@ class EditProperty extends Component {
         e.preventDefault()
         // create fucntion that will make the data without this.state.file
         // 
-        firebase.firestore().collection("properties")
-        .update(this.state)
+        firebase.firestore()
+          .collection("properties")
+          .doc(this.props.match.params.id) //
+          .update(this.state.property)
         .then(() => {
         console.log("Document successfully EDITTED!");
         })
@@ -37,10 +39,13 @@ class EditProperty extends Component {
         });
         return this.props.history.push('/allproperties')
     }
+    success = () => {
+      message.success('Property successfully edited.');
+    };
 
   render() {
     const { firstName, lastName, email, phone, 
-        address, city, state, zip } = this.state
+        address, city, state, zip } = this.state.property
 
     return (
         <div>
@@ -60,7 +65,7 @@ class EditProperty extends Component {
             <input type="text" name="state" placeholder="State"onChange={this.onChange} value={state} ></input>
             <input type="number" name="zip"  placeholder="Zip" onChange={this.onChange} value={zip} ></input>
             <input id="fileupload" name="img" type="file" onChange={this.readFile} />
-            <button type="submit">Edit Property</button>
+            <Button onClick={this.success} htmlType="submit">Edit Property</Button>
           </div>
         </form>
       </div>
@@ -68,4 +73,4 @@ class EditProperty extends Component {
   }
 }
 
-export default EditProperty;
+export default withRouter(EditProperty);

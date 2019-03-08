@@ -63,7 +63,8 @@ class AllAdminProperties extends Component {
             <Card
             style={{ width: 300 }}
             cover={<img alt="example" src={p.file} />}
-            actions={[<Link to="/editproperty"><Icon type="edit"/></Link> ,
+
+            actions={[<Link to={`/${p.uid}/editproperty`}><Icon type="edit"/></Link> ,
             
             <Popconfirm title="Delete this property?" onConfirm={() => this.deleteProp(p.uid)} onCancel={this.cancel} okText="Yes" cancelText="No">
             <a href="#">Delete</a>

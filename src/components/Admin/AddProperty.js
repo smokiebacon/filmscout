@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { storeFile, getFile } from '../../Firebase/storage';
 import Upload  from '../Upload/Upload'
 import PicturesWall from '../Upload/Upload';
+import PropertyType from '../FlowProperty/PropertyType/PropertyType';
+import PropertyFeatures from  '../FlowProperty/PropertyFeatures/PropertyFeatures';
 
 class AddProperty extends Component {
   state = {
@@ -16,7 +18,38 @@ class AddProperty extends Component {
     email: '',
     phone: '',
     fileRef: '',
+    type: '',
+    style: '',
+    features: []
   }
+
+clickHandler = (e) =>{
+  console.log(e)
+  if (e === "House" ||
+      e === "Business" ||
+      e === "Apartment" ||
+      e === "Restaurant" ||
+      e === "Shopping Center"){
+        this.setState({
+          ...this.state,
+          type: e
+        })
+      } else {
+        this.setState({
+          ...this.state,
+          style: e
+        })
+      }
+
+}
+updateCheckbox = (e) => {
+  console.log(e, 'THIS IS CHECKBOX FROM ADDPROPERTY.JS')
+  this.setState({
+    ...this.state,
+    features: e
+  })
+
+}
 onChange = (e) => {
   this.setState({
     [e.target.name] : e.target.value
@@ -45,19 +78,17 @@ onSubmit = (e) => {
   console.error("Error writing document: ", error);
   });
   return this.props.history.push('/allproperties')
-
-  
-
 }
 
 render () {
   console.log(this.state)
   const { firstName, lastName, email, phone, 
           address, city, state, zip } = this.state
-
   return (
     <div>
-      <h1>Add Properties Page</h1>
+     <PropertyType click={this.clickHandler}/>
+     <PropertyFeatures updateCheckbox={this.updateCheckbox}/>
+      <h1>Add Properties</h1>
       <form className="admin__addproperty__form" onSubmit={this.onSubmit}>
         <div className="admin__addproperty__contact-info">
         <h2>Contact Info</h2>
@@ -76,8 +107,6 @@ render () {
           <button type="submit">Submit</button>
         </div>
       </form>
-      <PicturesWall />
-
     </div>
     
   )

@@ -3,6 +3,8 @@ import firebase from '../../Firebase/Firebase';
 import { withRouter } from 'react-router-dom'
 import { doGetProperty } from '../../Firebase/Properties'
 import { message, Button } from 'antd';
+import PropertyType from '../FlowProperty/PropertyType/PropertyType';
+import PropertyFeatures from  '../FlowProperty/PropertyFeatures/PropertyFeatures';
 
 
 class EditProperty extends Component {
@@ -15,6 +17,39 @@ class EditProperty extends Component {
         doGetProperty(this.props.match.params.id)
           .then(snapShot => this.setState({ property: snapShot.data()}))
           // .then(snapShot => console.log(snapShot.data()))
+    }
+
+    clickHandler = (e) =>{
+      console.log(e)
+      if (e === "House" ||
+          e === "Business" ||
+          e === "Apartment" ||
+          e === "Restaurant" ||
+          e === "Shopping Center"){
+            this.setState({
+              property:{
+                ...this.state.property,
+                type: e
+              }
+            })
+          } else {
+            this.setState({
+              property:{
+                ...this.state.property,
+                style: e
+              }
+            })
+          }
+    }
+
+    updateCheckbox = (e) => {
+      console.log(e, 'THIS IS CHECKBOX FROM ADDPROPERTY.JS')
+      this.setState({
+        property:{
+          ...this.state.property,
+          features: e
+        }
+      })
     }
 
     onChange = (e) => {
@@ -44,12 +79,29 @@ class EditProperty extends Component {
     };
 
   render() {
-    const { firstName, lastName, email, phone, 
-        address, city, state, zip } = this.state.property
+    const { 
+      firstName, 
+      lastName, 
+      email, 
+      phone, 
+      address, 
+      city,
+      features,
+      style,
+      type, 
+      zip, 
+      state } = this.state.property
 
     return (
         <div>
-        <h1>Edit Property Page</h1>
+     <h1>Edit Property Page</h1>
+     {
+       (style && type) && <PropertyType style={style} type={type} click={this.clickHandler}/>
+     }
+     {
+       features && <PropertyFeatures features={features} updateCheckbox={this.updateCheckbox}/> 
+
+     }
         <form className="admin__addproperty__form" onSubmit={this.onSubmit}>
           <div className="admin__addproperty__contact-info">
           <h2>Contact Info</h2>

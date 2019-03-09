@@ -37,11 +37,9 @@ class App extends Component {
       <Route exact path="/addproperty" component = { AddProperty } />
       <Route exact path="/allproperties" component = { AllAdminProperties } />
       <Route exact path="/:id/editproperty" component = { EditProperty } />
-
       <Route exact path="/register" component = { Register } />
       <Route path="/login" component={() => <Login doSetCurrentUser={(user) => this.setState({currentUser: user})}/>}/>
       <Footer />
-
       </div>
       </Switch>
 

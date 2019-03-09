@@ -13,6 +13,7 @@ import Dashboard from './components/Admin/Dashboard';
 import AllAdminProperties from './components/Admin/AllAdminProperties';
 import EditProperty from './components/Admin/EditProperty';
 import PropertyType from './components/FlowProperty/PropertyType/PropertyType';
+import AllProperties from './components/Properties/AllProperties/AllProperties';
 
 class App extends Component {
   state = {
@@ -36,6 +37,7 @@ class App extends Component {
       <Route exact path="/flowproperty" component = { PropertyType } />
       <Route exact path="/addproperty" component = { AddProperty } />
       <Route exact path="/allproperties" component = { AllAdminProperties } />
+      <Route exact path="/properties" component = { AllProperties } />
       <Route exact path="/:id/editproperty" component = { EditProperty } />
       <Route exact path="/register" component = { Register } />
       <Route path="/login" component={() => <Login doSetCurrentUser={(user) => this.setState({currentUser: user})}/>}/>

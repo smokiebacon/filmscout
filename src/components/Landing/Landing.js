@@ -9,7 +9,7 @@ class Landing extends Component {
         <div className="layout__landing">
             <h1>Rent Beautiful Filming Locations</h1>
             <input type="text" placeholder="Search for location"></input>
-            <Button type="primary">Browse Locations</Button>
+            <Link to="/properties" ><Button type="primary">Browse Locations</Button></Link>
         </div>
       </div>
     )

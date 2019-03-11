@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { db } from '../../../Firebase/Firebase'
 import { getFile } from '../../../Firebase/storage';
 import { Link } from 'react-router-dom'
-
+import Searchbar from '../../SearchBar/Searchbar'
 import { Card, Icon  } from 'antd';
 
 
@@ -32,16 +32,16 @@ class AllProperties extends Component {
 
     return (
       <div>
-        <h1>All Props</h1>
+        <h1>All Locations for Filming</h1>
+        <Searchbar />
         <div className="admin__alladminproperties__cards">
-        <h1>All Admin Properties</h1>
         {this.state.properties.map(p => {
           return(
             <Card
             style={{ width: 300 }}
             cover={<img alt="example" src={p.file} />}
 
-            actions={[<Link to={`/property/${p.uid}`}></Link>]}>
+            actions={<Link to={`/property/${p.uid}`}></Link>}>
 
             <Meta
             title={p.address}

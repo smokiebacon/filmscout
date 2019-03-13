@@ -14,6 +14,7 @@ import AllAdminProperties from './components/Admin/AllAdminProperties';
 import EditProperty from './components/Admin/EditProperty';
 import PropertyType from './components/FlowProperty/PropertyType/PropertyType';
 import AllProperties from './components/Properties/AllProperties/AllProperties';
+import OneProperty from './components/Properties/OneProperty/OneProperty';
 
 class App extends Component {
   state = {
@@ -35,6 +36,7 @@ class App extends Component {
       <Route exact path="/" component = { Landing } />
       <Route exact path="/dashboard" component = { Dashboard } />
       <Route exact path="/flowproperty" component = { PropertyType } />
+      <Route exact path="/property/:id" component = { OneProperty } />
       <Route exact path="/addproperty" component = { AddProperty } />
       <Route exact path="/allproperties" component = { AllAdminProperties } />
       <Route exact path="/properties" component = { AllProperties } />

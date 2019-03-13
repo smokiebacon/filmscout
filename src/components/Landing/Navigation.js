@@ -1,9 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom' 
-import { Menu, Icon } from 'antd'
-
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+import { Menu } from 'antd'
 
 class Navigation extends React.Component {
   state = {
@@ -24,14 +21,11 @@ class Navigation extends React.Component {
         selectedKeys={[this.state.current]}
         mode="horizontal"
       >
-        <Menu.Item key="mail">
+        <Menu.Item key="home">
           <Link to="/">Film Scouter</Link>
         </Menu.Item>
-        <Menu.Item key="app">
-          <Link to="/login">Login</Link>
-        </Menu.Item>
-        <Menu.Item key="alipay">
-          <Link to="/register" rel="noopener noreferrer">Register</Link>
+        <Menu.Item key="contact">
+          Contact Us: (626) 555-555
         </Menu.Item>
       </Menu>
     );

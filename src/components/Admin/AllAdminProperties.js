@@ -12,15 +12,16 @@ class AllAdminProperties extends Component {
   }
 
   componentDidMount () {
-
     var docRef = db.collection("properties")  //
     docRef.get().then((snapShot) => { 
       snapShot.docs.map(d => { //mapping thru all docs
-        getFile(d.data().fileRef) //getFile from all data. actually gets the file
-          .then(file => this.setState({properties: [ //set state properties to the file and userid
+        getFile(d.data().fileRef[0]) //getFile from all data. actually gets the file
+          .then(file => 
+            this.setState({properties: [ //set state properties to the file and userid
             ...this.state.properties, 
             Object.assign(d.data(), {file:file}, {uid: d.id})
-          ]}))
+          ]})
+          )
       })
     }).catch(function(error) {
         console.log("Error getting document:", error);
@@ -37,10 +38,6 @@ class AllAdminProperties extends Component {
   message.error('Cancelled');
 }
 
-  editProp = (id) => {
-
-
-}
   deleteProp = (id) => {
     deleteProperty(id) 
     .then(() => {
@@ -53,10 +50,11 @@ class AllAdminProperties extends Component {
   }
   render() {
     const { Meta } = Card;
+    
 
     return (
+     
       <div className="admin__alladminproperties__cards">
-        <h1>All Admin Properties</h1>
         {this.state.properties.map(p => {
           return(
             <Card

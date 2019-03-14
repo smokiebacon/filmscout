@@ -13,10 +13,13 @@ class Searchbar extends React.Component {
         { id: 4, name: "Spa" },
         { id: 5, name: "Pool" },
         { id: 6, name: "Swimming Pool" },
-        { id: 7, name: "Firebase" },
+        { id: 7, name: "Playground" },
         { id: 8, name: "Chandelier" },
-        { id: 9, name: "Wine Cellar" }
-
+        { id: 9, name: "Wine Cellar" },
+        { id: 10, name: "Gym" },
+        { id: 11, name: "Escalator" },
+        { id: 12, name: "Billards" },
+        { id: 13, name: "Elevator" },
       ]
     }
   }
@@ -35,7 +38,7 @@ class Searchbar extends React.Component {
  
   render () {
     return (
-      <ReactTags style={{width: '400px'}}
+      <ReactTags 
         tags={this.state.tags}
         suggestions={this.state.suggestions}
         handleDelete={this.handleDelete.bind(this)}

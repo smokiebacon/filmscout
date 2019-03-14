@@ -20,19 +20,19 @@ class App extends Component {
   state = {
     currentUser : {}
   }
-  componentDidMount() {
-    auth.onAuthStateChanged(authUser => 
-      authUser &&
-        doGetUser(authUser.uid)
-          .then(currentUser => this.setState({currentUser: currentUser.data()}))
-    )
-  }
+  // componentDidMount() {
+  //   auth.onAuthStateChanged(authUser => 
+  //     authUser &&
+  //       doGetUser(authUser.uid)
+  //         .then(currentUser => this.setState({currentUser: currentUser.data()}))
+  //   )
+  // }
   render() {
-    console.log(this.state)
+    console.log(this.state.currentUser, 'CURRENT USER')
     return (
       <Switch>
       <div className="App">
-      <Navigation />
+      <Navigation currentUser = { this.state.currentUser } />
       <Route exact path="/" component = { Landing } />
       <Route exact path="/dashboard" component = { Dashboard } />
       <Route exact path="/flowproperty" component = { PropertyType } />

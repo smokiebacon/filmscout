@@ -1,68 +1,60 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Film Scout
 
-## Available Scripts
+Penny Lane Agency's current website is static and merely has a simple splash and contact page. Clients of Penny Lane currently email the agents property info and photos. 
+The agents has a giant collection of property location on their desktop and need to manually sift through their computer files to find the filming locations.
 
-In the project directory, you can run:
+UI/UX team Kat, Shen, and Daniel designed a website that would solve this problem.
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Introducting Film Scout:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+A web app that allows visitors to browse filming locations: houses, offices, businesses, parks, gardens, and other locations and book them through an agent.
 
-### `npm test`
+Users are able to filter search results by tags: in the input tag box, users can select from a myriad of features the user needs: whether the location needs a pool, fireplace, spa, garden, chandelier, etc.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The agent, or admin is able to create an account and do CRUD operations on shooting locations. 
 
-### `npm run build`
+Normal website uses are unable to register for an account. The website is the middleman between the film shooting locations and the client.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Deployed Link
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+https://scout-4801e.firebaseapp.com/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Technology Used
 
-### `npm run eject`
+* HTML
+* CSS
+* Javascript
+* AntDesign (used by giant Chinese tech companies, Alibaba and Baidu) 44K Github stars VS Bootstraps 132K stars
+* ReactJS
+* Google Firebase
+* Google Firestore
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#  Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Challenges
+* Constantly went through Imposter Syndrome.
+* Learning completely new tech: Firebase and a new React CSS Framework: AntDesign when there is hardly any other project examples to reference off of.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+# Features to Meet Until MVP is Met
+* Agent needs to be able to add or delete additional photos within an existing property
+* Property Individual Page: Map through all photos and display them in a nice grid.
+* Search bar: needs to include city.
+* Add Contact Page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+# Upcoming Features
+* Needs crazy styling to look good
+* Add Logout functionality to Agent
+* Add ability for Users to register for a normal account and add locations to their favorites.
+* Add ability for Users to review and comment after filmshoot is complete.
+* Agent can currently do CRUD on shooting locations, but cannot Add or Delete additional photos to an existing property.
+* Agents need to be manage their properties easier. Need to implement an Admin search panel.
+* When agents add a property, currently ID is completely randomized by Firestore. Need to make Firestore's database data ID increase incrementally so agent can easily sort and find properties via the admin panel.
+* Pagination: When more than X properties are in a page, split them into different pages. 
+* Add Contact Us
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

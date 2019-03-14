@@ -35,16 +35,8 @@ class AllProperties extends Component {
 }
    query = (query) => {
    
-    const tags = [...query].map(q => q.name)
-    const tag = query[query.length - 1].name;
-    console.log(tag)
-    // const citiesRef = db.collection("properties");
-    // citiesRef.where("features", "array-contains", tags)
-    //   .get()
-    //   .then((snapShot) => 
-    //     snapShot.docs.map(d => console.log(d.data()))
-    //   )
-      
+    // const tags = [...query].map(q => q.name)
+    const tag = query[query.length - 1].name;      
       let filteredProperties = [];
       let properties = this.state.filteredProperties.length > 0 ? [...this.state.filteredProperties] : [...this.state.properties];
       console.log('searched properties', properties, 'cleared arry', filteredProperties);

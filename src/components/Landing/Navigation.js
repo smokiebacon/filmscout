@@ -21,7 +21,7 @@ class Navigation extends React.Component {
       selectedKeys={[this.state.current]}
       mode="horizontal"
     >
-      <Menu.Item key="home">
+      <Menu.Item key="film">
         <Link to="/">Film Scouter</Link>
       </Menu.Item>
       <Menu.Item key="Admin Page">
@@ -51,7 +51,7 @@ class Navigation extends React.Component {
       <Menu.Item key="properties">
         <Link to="/properties">View All Properties</Link>
       </Menu.Item>
-      <Menu.Item key="home">
+      <Menu.Item key="contact">
         <Link to="/contact">Contact Us</Link>
       </Menu.Item>
     </Menu>

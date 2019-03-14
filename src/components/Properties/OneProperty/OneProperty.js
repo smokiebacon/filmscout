@@ -28,7 +28,7 @@ class OneProperty extends Component {
       {property.country}
 
       <h4>Features: {property.features + ' '}</h4>
-      <img src={property.fileRef}/>
+      <img src={property.fileRef} alt="property" />
 
         <div className="callCard">
           <Affix offsetTop={120} onChange={affixed => console.log(affixed)}>

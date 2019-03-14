@@ -3,8 +3,6 @@ import './App.css';
 import Landing from './components/Landing/Landing';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
-import { auth } from './Firebase/Firebase'
-import { doGetUser } from './Firebase/User'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import  Navigation from './components/Landing/Navigation'
 import  Footer from './components/Landing/Footer'

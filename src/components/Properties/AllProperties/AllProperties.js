@@ -36,50 +36,31 @@ class AllProperties extends Component {
    query = (query) => {
    
     const tags = [...query].map(q => q.name)
-    console.log(tags)
+    const tag = query[query.length - 1].name;
+    console.log(tag)
     // const citiesRef = db.collection("properties");
     // citiesRef.where("features", "array-contains", tags)
     //   .get()
     //   .then((snapShot) => 
     //     snapShot.docs.map(d => console.log(d.data()))
     //   )
-
+      
       let filteredProperties = [];
-      let properties = [...this.state.properties];
+      let properties = this.state.filteredProperties.length > 0 ? [...this.state.filteredProperties] : [...this.state.properties];
+      console.log('searched properties', properties, 'cleared arry', filteredProperties);
       for (let i = 0; i < properties.length; i++ ) {
-        for (let j = 0; j < tags.length; j++) {
-          if (properties[i].features.includes(tags[j])) {
-            filteredProperties.push(properties[i])
-            properties.splice(i, 1)
-          }
+        if (properties[i].features.includes(tag)) {
+          filteredProperties.push(properties[i])
         }
       }
-
       //why client side over server side?
       // mini-app that doesn't load so many pic
       //server side for millions of search
-      // Start: filteredProperties
-      // Find tags within Properties
-      // Remove all Properties without Tags
-      // let filteredProperties = [...this.state.filteredProperties];
-      // let properties = [...this.state.properties];
-      // for (let i = 0; i < filteredProperties.length; i++ ) {
-      //   for (let j = 0; j < tags.length; j++) {
-      //     if (filteredProperties[i].features.includes(tags[j])) {
-      //       // Found tags
-      //     } else {
-      //       // All properties without tags
-      //       // Remove here
-      //       // filteredProperties.splice(i, 1)
-      //     }
-      //   }
-      // }
-      console.log('filteredProperties', filteredProperties, 'properties' ,properties);
       
       this.setState({
         filteredProperties : filteredProperties
-      })
-
+      }, () => { console.log('this.state.filteredProperties', this.state.filteredProperties)})
+      console.log('filteredProperties', filteredProperties, 'properties', properties);
   }
 
   render() {

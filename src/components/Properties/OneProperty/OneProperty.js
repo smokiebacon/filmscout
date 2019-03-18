@@ -2,20 +2,28 @@ import React, { Component } from 'react'
 import { Card, Affix } from 'antd';
 import { doGetProperty, } from '../../../Firebase/Properties'
 import { withRouter } from 'react-router-dom';
+import { getFile } from '../../../Firebase/storage'
 
 class OneProperty extends Component {
   state = {
     property: {}
   }
+
   componentDidMount () {
+    
     doGetProperty(this.props.match.params.id)
-      .then(snapShot => this.setState({property: snapShot.data()}))
+      .then(snapShot => this.setState({
+        property: snapShot.data()}
+        ))
+      .catch(err => console.log(err))
     }
 
   render() {
     const { Meta } = Card;
     const { property } = this.state
-    console.log(property);
+    // console.log(property);
+    // const pic = getFile(property.fileRef)
+    // console.log(pic);
     return (
       <div>
       <h2>Property Show Page</h2>
@@ -29,6 +37,7 @@ class OneProperty extends Component {
 
       <h4>Features: {property.features + ' '}</h4>
       <img src={property.fileRef} alt="property" />
+
 
         <div className="callCard">
           <Affix offsetTop={120} onChange={affixed => console.log(affixed)}>

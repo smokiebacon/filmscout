@@ -10,7 +10,6 @@ class OneProperty extends Component {
   }
 
   componentDidMount () {
-    
     doGetProperty(this.props.match.params.id)
       .then(snapShot => this.setState({
         property: snapShot.data()}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Button from 'antd/lib/button';
+import ClientTele from '../Clientele/Clientele';
 
 class Landing extends Component {
   render() {
@@ -17,8 +18,11 @@ class Landing extends Component {
             </div>
           </div>
         </div>
+        <div>
+        <ClientTele />
+        </div>
+
       </div>
-      
     )
   }
 }

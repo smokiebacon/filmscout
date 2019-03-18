@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Button from 'antd/lib/button';
 import ClientTele from '../Clientele/Clientele';
+import Featured from '../Featured/Featured';
 
 class Landing extends Component {
   render() {
@@ -10,6 +11,7 @@ class Landing extends Component {
         <div className="layout__landing">
           <div className="dark-overlay">
             <div className="intro">
+
               <h1 className="introh1">Filming Locations for Rent</h1>
               <div className="search">
                 <input type="text" placeholder="Search for location" ></input>
@@ -19,9 +21,11 @@ class Landing extends Component {
           </div>
         </div>
         <div>
-        <ClientTele />
-        </div>
+        <Featured />
 
+        <ClientTele />
+
+        </div>
       </div>
     )
   }

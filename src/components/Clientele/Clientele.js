@@ -12,7 +12,7 @@ const ClientTele = () => {
       sm={8}
       xs={24}
       style={{
-          height: 80,
+          height: 20,
       }}
     >
       <img width={220} src={img} alt="" />
@@ -20,7 +20,7 @@ const ClientTele = () => {
   ));
   return (
     <OverPack component="section" className="page-wrapper page5 text-center">
-    
+
         <h2 key="h2">Our Clients Include:</h2>
         <span className="separator" key="span" />
         <Row

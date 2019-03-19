@@ -1,21 +1,32 @@
 import React, { Component } from 'react'
 import firebase from '../../Firebase/Firebase';
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { doGetProperty } from '../../Firebase/Properties'
-import { message, Button } from 'antd';
+import { message, Card, Popconfirm, Button, Icon } from 'antd';
 import PropertyType from '../FlowProperty/PropertyType/PropertyType';
 import PropertyFeatures from  '../FlowProperty/PropertyFeatures/PropertyFeatures';
+import { getFile } from '../../Firebase/storage'
 
 
 class EditProperty extends Component {
     state = {
-        property: {}
+        property: {},
+        pictures: []
       }
 
     componentDidMount () {
       console.log(this.props.match.params.id)
         doGetProperty(this.props.match.params.id)
-          .then(snapShot => this.setState({ property: snapShot.data()}))
+          .then(snapShot => {
+            snapShot.data().fileRef.forEach(f => {
+              getFile(f)
+                .then(ref => 
+                  this.setState({pictures: [...this.state.pictures, ref]})
+                  )
+            })
+            this.setState({ property: snapShot.data()})
+          })
+            // this.setState({ property: snapShot.data()}))
           // .then(snapShot => console.log(snapShot.data()))
     }
 
@@ -91,9 +102,9 @@ class EditProperty extends Component {
       type, 
       zip, 
       state } = this.state.property
-
+      const { Meta } = Card;
     return (
-        <div>
+    <div>
      <h1>Edit Property Page</h1>
      {
        (style && type) && <PropertyType style={style} type={type} click={this.clickHandler}/>
@@ -102,6 +113,26 @@ class EditProperty extends Component {
        features && <PropertyFeatures features={features} updateCheckbox={this.updateCheckbox}/> 
 
      }
+        <div className="EditProperty__Gallery">
+        { 
+          this.state.pictures.map(p =>
+            <Card
+            hoverable
+            style={{ width: 240 }}
+            cover={<img alt="example" src={p} />}
+          >
+          </Card>,
+          // <Card
+          //   style={{ width: 300 }}
+          //   cover={<img alt="house picture" src={p} />}
+          //   actions={[
+          //     <Popconfirm title="Delete this property?" onConfirm={() => this.deleteProp(p.uid)} onCancel={this.cancel} okText="Yes" cancelText="No">
+          //       <a href="#">Delete</a>
+          //     </Popconfirm>]}>
+          // </Card>
+          )
+        }
+        </div>   
         <form className="admin__addproperty__form" onSubmit={this.onSubmit}>
           <div className="admin__addproperty__contact-info">
           <h2>Contact Info</h2>
@@ -120,7 +151,7 @@ class EditProperty extends Component {
             <Button onClick={this.success} htmlType="submit">Edit Property</Button>
           </div>
         </form>
-      </div>
+    </div>
     )
   }
 }

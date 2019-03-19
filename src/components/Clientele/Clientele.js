@@ -12,7 +12,7 @@ const ClientTele = () => {
       sm={8}
       xs={24}
       style={{
-          height: 20,
+          height: 80,
       }}
     >
       <img width={220} src={img} alt="" />

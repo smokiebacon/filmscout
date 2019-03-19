@@ -26,8 +26,6 @@ class EditProperty extends Component {
             })
             this.setState({ property: snapShot.data()})
           })
-            // this.setState({ property: snapShot.data()}))
-          // .then(snapShot => console.log(snapShot.data()))
     }
 
     clickHandler = (e) =>{
@@ -116,19 +114,19 @@ class EditProperty extends Component {
         <div className="EditProperty__Gallery">
         { 
           this.state.pictures.map(p =>
+        
             <Card
-            hoverable
             style={{ width: 240 }}
             cover={<img alt="example" src={p} />}
-          >
-          </Card>,
+            actions={[
+            <Popconfirm title="Delete this picture?" onConfirm={() => this.deleteProp(p)} onCancel={this.cancel} okText="Yes" cancelText="No">
+              <a href="#">Delete</a>
+            </Popconfirm>]}>
+            </Card>
           // <Card
           //   style={{ width: 300 }}
           //   cover={<img alt="house picture" src={p} />}
-          //   actions={[
-          //     <Popconfirm title="Delete this property?" onConfirm={() => this.deleteProp(p.uid)} onCancel={this.cancel} okText="Yes" cancelText="No">
-          //       <a href="#">Delete</a>
-          //     </Popconfirm>]}>
+          
           // </Card>
           )
         }

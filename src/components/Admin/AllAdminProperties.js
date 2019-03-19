@@ -68,8 +68,8 @@ class AllAdminProperties extends Component {
             </Popconfirm>]}>
 
             <Meta
-            title={p.address}
-            description="This is the description"/>
+            title={p.propID}
+            description={p.address}/>
             </Card>
                 )
           })

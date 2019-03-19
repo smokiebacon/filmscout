@@ -17,6 +17,7 @@ class AddProperty extends Component {
     phone: '',
     fileRef: '',
     type: '',
+    propID: '',
     style: '',
     features: [],
     files: []
@@ -91,7 +92,7 @@ addFile = (e) => {
 
 render () {
   console.log(this.state)
-  const { firstName, lastName, email, phone, 
+  const { firstName, lastName, email, phone, propID,
           address, city, state, zip } = this.state
   return (
     <div>
@@ -108,6 +109,7 @@ render () {
         </div>
         <div className="admin__addproperty__property-info">
         <h2>Property Info</h2>
+          <input type="text" name="propID" placeholder="Property ID. Ex: PL102" onChange={this.onChange} value={propID} ></input>
           <input type="text" name="address" placeholder="Address" onChange={this.onChange} value={address} ></input>
           <input type="text" name="city" placeholder="City" onChange={this.onChange} value={city} ></input>
           <input type="text" name="state" placeholder="State"onChange={this.onChange} value={state} ></input>
@@ -129,7 +131,7 @@ export default withRouter(AddProperty);
 /*
 [x] ABLE TO UPLOAD MULTIPLE PHOTOS TO A PROPERTY
 [ ] EDIT PROPERTY: ABLE TO ADD AND DELETE MULTIPLE PHOTOS FROM PROPERTY
-[ ] ADVANCED SEARCH BAR
+[y ] ADVANCED SEARCH BAR
 
 
 ICEBOX

@@ -1,7 +1,12 @@
 @import '~antd/dist/antd.css';
 
 img {
-  width: 100%;
+
+    display: block;
+    border: 0;
+    width: 100%;
+    height: auto;
+  
 }
 .layout__landing {
   position: relative;
@@ -17,11 +22,21 @@ img {
 }
 
 
+.featured__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
 
-/* .admin__alladminproperties__cards{
-  display: grid;
-  
-} */
+}
+
+.featured__card {
+ flex: 0 1 24%;
+ background: white;
+ margin-top: 2em;	
+ 
+}
+
 
 .admin__alladminproperties__cards {
   display: flex;
@@ -30,13 +45,13 @@ img {
   align-content: center;
 
 }
-.featured__cards {
+/* .featured__cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: center;
 
-}
+} */
 
 .EditProperty__Gallery {
   display: flex;
@@ -58,6 +73,15 @@ img {
   .admin__alladminproperties__cards {
     grid-template-columns: auto auto;
   }
+  .featured__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+  .featured__card {
+    flex: 0 1 calc(50% - 1em);
+}
 
 }
 

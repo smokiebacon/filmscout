@@ -6,21 +6,36 @@ import { getFile } from '../../../Firebase/storage'
 
 class OneProperty extends Component {
   state = {
-    property: {}
+    property: {},
+    pictures: ''
   }
-
   componentDidMount () {
-    doGetProperty(this.props.match.params.id)
-      .then(snapShot => this.setState({
-        property: snapShot.data()}
-        ))
-      .catch(err => console.log(err))
-    }
+    console.log(this.props.match.params.id)
+      doGetProperty(this.props.match.params.id)
+        .then(snapShot => {
+          snapShot.data().fileRef.forEach(f => {
+            getFile(f)
+              .then(ref => 
+                this.setState({pictures: [...this.state.pictures, ref]})
+                )
+          })
+          this.setState({ property: snapShot.data()})
+        })
+  }
+  // componentDidMount () {
+  //   doGetProperty(this.props.match.params.id)
+  //     .then(snapShot => this.setState({
+  //       property: snapShot.data(),
+  //     }
+  //       ))
+  //     .catch(err => console.log(err))
+  //   }
 
   render() {
+
     const { Meta } = Card;
-    const { property } = this.state
-    // console.log(property);
+    const { property, pictures } = this.state
+    console.log(property);
     // const pic = getFile(property.fileRef)
     // console.log(pic);
     return (
@@ -35,7 +50,7 @@ class OneProperty extends Component {
       {property.country}
 
       <h4>Features: {property.features + ' '}</h4>
-      <img src={property.fileRef} alt="property" />
+      <img src={pictures} alt="property" />
 
 
         <div className="callCard">

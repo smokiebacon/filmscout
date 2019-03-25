@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Affix } from 'antd';
+import { Card, Affix, Tag } from 'antd';
 import { doGetProperty, } from '../../../Firebase/Properties'
 import { withRouter } from 'react-router-dom';
 import { getFile } from '../../../Firebase/storage'
@@ -22,14 +22,6 @@ class OneProperty extends Component {
           this.setState({ property: snapShot.data()})
         })
   }
-  // componentDidMount () {
-  //   doGetProperty(this.props.match.params.id)
-  //     .then(snapShot => this.setState({
-  //       property: snapShot.data(),
-  //     }
-  //       ))
-  //     .catch(err => console.log(err))
-  //   }
 
   render() {
 
@@ -47,7 +39,9 @@ class OneProperty extends Component {
       <br/>
       {property.country}
 
-      <h4>Features: {property.features + ' '}</h4>
+      <h4>Features: 
+      <Tag>{property.features}</Tag>
+      </h4>
 
       <div className="EditProperty__Gallery">
         { 
@@ -67,7 +61,7 @@ class OneProperty extends Component {
               <Card
               hoverable
               style={{ width: 240 }}
-              cover={<img alt="agent profile" src="" />}
+              cover={<img alt="agent profile" src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.imoney.my%2Farticles%2Fwp-content%2Fuploads%2F2014%2F01%2Freal-estate-agent.jpg&f=1" />}
               >
               <Meta
               title="Call Agent"

@@ -123,11 +123,6 @@ class EditProperty extends Component {
               <a href="#">Delete</a>
             </Popconfirm>]}>
             </Card>
-          // <Card
-          //   style={{ width: 300 }}
-          //   cover={<img alt="house picture" src={p} />}
-          
-          // </Card>
           )
         }
         </div>   

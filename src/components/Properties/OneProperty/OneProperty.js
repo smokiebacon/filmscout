@@ -27,7 +27,7 @@ class OneProperty extends Component {
 
     const { Meta } = Card;
     const { property, pictures } = this.state
-    console.log(pictures);
+    console.log(property);
     return (
       <div>
       <h2>Property Show Page</h2>
@@ -40,7 +40,8 @@ class OneProperty extends Component {
       {property.country}
 
       <h4>Features: 
-      <Tag>{property.features}</Tag>
+        {property.features && property.features.map(tag => 
+        <Tag>{tag}</Tag>)}
       </h4>
 
       <div className="EditProperty__Gallery">
@@ -57,7 +58,7 @@ class OneProperty extends Component {
         </div> 
 
         <div className="callCard">
-          <Affix offsetTop={120} onChange={affixed => console.log(affixed)}>
+          <Affix offsetTop={120} onChange={affixed => affixed}>
               <Card
               hoverable
               style={{ width: 240 }}

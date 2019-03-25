@@ -7,7 +7,7 @@ import { getFile } from '../../../Firebase/storage'
 class OneProperty extends Component {
   state = {
     property: {},
-    pictures: ''
+    pictures: []
   }
   componentDidMount () {
     console.log(this.props.match.params.id)
@@ -35,9 +35,7 @@ class OneProperty extends Component {
 
     const { Meta } = Card;
     const { property, pictures } = this.state
-    console.log(property);
-    // const pic = getFile(property.fileRef)
-    // console.log(pic);
+    console.log(pictures);
     return (
       <div>
       <h2>Property Show Page</h2>
@@ -50,8 +48,19 @@ class OneProperty extends Component {
       {property.country}
 
       <h4>Features: {property.features + ' '}</h4>
-      <img src={pictures} alt="property" />
 
+      <div className="EditProperty__Gallery">
+        { 
+          pictures.map(p =>
+        
+            <Card
+            style={{ width: 240 }}
+            cover={<img alt="example" src={p} />}
+            actions={[]}>
+            </Card>
+          )
+        }
+        </div> 
 
         <div className="callCard">
           <Affix offsetTop={120} onChange={affixed => console.log(affixed)}>

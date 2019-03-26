@@ -45,19 +45,19 @@ class AllProperties extends Component {
           filteredProperties.push(properties[i])
         }
       }
-      //why client side over server side?
-      // mini-app that doesn't load so many pic
-      //server side for millions of search
-      
       this.setState({
         filteredProperties : filteredProperties
-      }, () => { console.log('this.state.filteredProperties', this.state.filteredProperties)})
-      console.log('filteredProperties', filteredProperties, 'properties', properties);
+      })
   }
 
   render() {
     const { Meta } = Card;
     const Option = Select.Option;
+    // if (this.state.filteredProperties.length === 0) {
+      
+    //   return <h2>There are no properties with those tags</h2>
+       
+    //   }
     return (
     <div>
         <h1>All Locations for Filming</h1>
@@ -93,10 +93,9 @@ class AllProperties extends Component {
             </Card>
             )
           })
-          
         }
           </div>
-      </div>
+        </div>
          
     </div>
         

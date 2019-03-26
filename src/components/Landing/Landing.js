@@ -14,7 +14,6 @@ class Landing extends Component {
 
               <h1 className="introh1">Filming Locations for Rent</h1>
               <div className="search">
-                <input type="text" placeholder="Search for location" ></input>
                 <Link to="/properties" ><Button type="primary">Browse Locations</Button></Link>
               </div>
             </div>

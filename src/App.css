@@ -10,7 +10,7 @@ img {
 }
 .layout__landing {
   position: relative;
-  background: url('./img/house.jpeg') no-repeat;
+  background: url('./img/city.jpg') no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -59,14 +59,6 @@ img {
   align-content: center;
 }
 
-.properties__oneproperty__featuresTag {
-  background-color: aqua;
-}
-
-.properties__oneproperty__tag {
-  border: solid black 2px;
-
-}
 
 .page1 {
   background-color: blue;

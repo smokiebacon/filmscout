@@ -31,7 +31,6 @@ class OneProperty extends Component {
     return (
       <div>
       <h2>Property Show Page</h2>
-      {property.address}
       <br/>
       {property.city}
       <br/>
@@ -39,10 +38,10 @@ class OneProperty extends Component {
       <br/>
       {property.country}
 
-      <h4>Features: 
+      <h3>Features: 
         {property.features && property.features.map(tag => 
         <Tag>{tag}</Tag>)}
-      </h4>
+      </h3>
 
       <div className="EditProperty__Gallery">
         { 

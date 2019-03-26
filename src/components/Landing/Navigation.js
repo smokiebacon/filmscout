@@ -1,6 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom' 
+import { Link, withRouter } from 'react-router-dom' 
 import { Menu } from 'antd'
+import { auth } from '../../Firebase/Firebase'
+
 
 class Navigation extends React.Component {
   state = {
@@ -12,6 +14,11 @@ class Navigation extends React.Component {
     this.setState({
       current: e.key,
     });
+  }
+
+  logOut = (e) => {
+    auth.signOut();
+    return this.props.history.push('/login')
   }
 
   render() {
@@ -33,7 +40,7 @@ class Navigation extends React.Component {
       <Menu.Item key="View All Properties">
       <Link to="/allproperties">View All Properties</Link>
       </Menu.Item>
-      <Menu.Item key="Log Out">
+      <Menu.Item key="Log Out" onClick={this.logOut}>
       <Link to="/allproperties">Log Out</Link>
       </Menu.Item>
     </Menu>
@@ -63,4 +70,4 @@ class Navigation extends React.Component {
     );
   }
 }
-export default Navigation;
+export default withRouter(Navigation);

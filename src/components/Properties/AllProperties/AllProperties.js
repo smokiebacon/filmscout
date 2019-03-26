@@ -80,9 +80,10 @@ class AllProperties extends Component {
         <Searchbar query={this.query} />
         <div className="cardGrid">
             <div className="admin__alladminproperties__cards">
-        {this.state.filteredProperties.map(p => {
+        {this.state.filteredProperties.map((p, index) => {
           return (
             <Card
+            key={index}
             style={{ width: 300 }}
             cover={<Link to={`/property/${p.uid}`}>
             <img alt="example" src={p.file} /></Link>}

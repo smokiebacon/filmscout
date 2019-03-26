@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { auth } from '../../Firebase/Firebase'
+import { withRouter } from 'react-router-dom';
 import { doAddUser } from '../../Firebase/User';
 import Button from 'antd/lib/button';
 
@@ -25,6 +26,7 @@ class Register extends Component {
                 doAddUser(createdUser.user.uid, {
                     email : this.state.email
                 })
+                return this.props.history.push('/login')
             })
             .catch(err => {
                 console.log(err)
@@ -55,4 +57,4 @@ class Register extends Component {
   }
 }
 
-export default Register
+export default withRouter(Register)

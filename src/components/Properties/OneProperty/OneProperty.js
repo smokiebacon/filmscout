@@ -39,8 +39,8 @@ class OneProperty extends Component {
       {property.country}
 
       <h3>Features: 
-        {property.features && property.features.map(tag => 
-        <Tag>{tag}</Tag>)}
+        {property.features && property.features.map((tag, index) => 
+        <Tag key={index}> {tag}</Tag>)}
       </h3>
 
       <div className="EditProperty__Gallery">
